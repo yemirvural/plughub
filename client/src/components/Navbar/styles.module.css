@@ -1,0 +1,64 @@
+.navbar{
+    position: fixed;
+    display: flex;
+    background-color: #003ca6;
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
+    color: white;
+    font-family: 'Roboto','Helvetica Neue','sans-serif';
+}
+
+.logo img{
+    width: 150px;
+    margin-left: 15px;
+}
+
+.navbaritems a > button {
+    border: 0;
+    width: 100px;
+    height: 3rem;
+    color: white;
+    background-color: #003ca6;
+    border-left: 1px solid #003490;
+}
+
+.navbaritems a > button:hover{
+    color: white;
+    background-color: #0a4dc5;
+}
+.langswitch > button{
+    padding: 5px;
+    border: 0;
+    border-radius: 3px;
+    background-color: #1558cf;
+    color: white;
+}
+
+.langswitch > button:hover{
+    background-color: #3071e3;
+}
+
+.langswitch{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.business > button{
+    width: 165px;
+    color: white;
+    background-color: #003ca6;
+    height: 3rem;
+    border: 0;
+    border-right: 1px solid #003490;
+    border-left: 1px solid #003490;
+}
+.business > button:hover{
+    background-color: #0a4dc5;
+}

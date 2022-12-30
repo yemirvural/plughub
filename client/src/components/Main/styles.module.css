@@ -1,0 +1,36 @@
+.searchbox{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    height: 2.5rem;
+    width: 350px;
+    margin-top: 4rem;
+    margin-left: 20px;
+    border: 1px solid grey;
+    position: fixed;
+}
+
+.searchbox > span > button{
+    height: 40px;
+    width: 40px;
+    border: 0;
+    background-color: white;
+    border-right: 1px solid grey;
+}
+
+.searchinput{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+.searchinput input{
+    padding: 7px;
+    border: 0;
+    outline: none;
+    margin-left: 10px;
+    width: 250px;
+}
+.searchinput label{
+    margin-left: 5px;
+
+}
