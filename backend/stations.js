@@ -1,5 +1,3 @@
-
-
 const stations = [];
 fetch('./electric-vehicle-charging-stations.json')
     .then(el => el.json())
