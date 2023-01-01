@@ -6,10 +6,11 @@ export const LocationProvider = ({ children }) => {
     const [location, setLocation] = useState('');
     const [coordinates, setCoordinates] = useState({ lon: 31.589813, lat: 40.731647 });
     const [autoLocate, setAutoLocate] = useState(false);
-    
+    const [currentLocation, setCurrentLocation] = useState({ lon:  31.589813, lat: 40.731647 });
+
     const [viewState, setViewState] = useState({
         longitude: 31.589813,
-        latitude:  40.731647,
+        latitude: 40.731647,
         zoom: 11.5
     })
 
@@ -21,9 +22,11 @@ export const LocationProvider = ({ children }) => {
         autoLocate,
         setAutoLocate,
         viewState,
-        setViewState
+        setViewState,
+        currentLocation,
+        setCurrentLocation
     };
-    
+
     return <LocationContext.Provider value={values}>{children}</LocationContext.Provider>;
 }
 

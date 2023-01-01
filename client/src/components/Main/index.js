@@ -7,15 +7,17 @@ import { useEffect, useState } from 'react';
 
 
 function Main() {
-  const { location, setLocation, coordinates, setCoordinates, autoLocate, setAutoLocate, setViewState } = useLocation();
+  const { location, setLocation, coordinates, setCoordinates, autoLocate, setAutoLocate, setViewState, currentLocation, setCurrentLocation } = useLocation();
 
-  const [lat, setLat] = useState(null);
-  const [lng, setLng] = useState(null);
   const [status, setStatus] = useState(null);
 
   useEffect(() => {
     findLocation()
   }, [coordinates]);
+  
+  useEffect(() => {
+    getLocation()
+  }, []);
 
 
   const findCoordinates = (e) => {
@@ -47,18 +49,20 @@ function Main() {
     } else {
       setStatus('Locating...');
       navigator.geolocation.getCurrentPosition((position) => {
-        setStatus(null);
+        setStatus("Konum tespit edildi.");
         setCoordinates({ lon: position.coords.longitude, lat: position.coords.latitude })
+        setCurrentLocation({ lon: position.coords.longitude, lat: position.coords.latitude })
       }, () => {
         setStatus('Unable to retrieve your location');
       });
     }
   }
+  console.log(status)
 
   return (
     <div>
       <div className={styles.searchbox}>
-        <span><button><AiOutlineMenu /></button></span>
+        <span><button className={styles.menu}><AiOutlineMenu /></button></span>
         <div className={styles.searchinput}>
           <form action="submit" onSubmit={findCoordinates}>
             <input

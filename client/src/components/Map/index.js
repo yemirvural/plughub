@@ -3,17 +3,23 @@ import Map, { Marker } from 'react-map-gl';
 import styles from './styles.module.css'
 import { useEffect, useState } from 'react';
 import { IoMdPin } from 'react-icons/io';
+import { TiLocationArrow } from 'react-icons/ti';
 import { useLocation } from '../../context/LocationContext';
 import { useStation } from '../../context/StationContext';
-import { tab } from '@testing-library/user-event/dist/tab';
 
 
 function ScreenMap() {
-    const { location, setLocation, coordinates, setCoordinates, autoLocate, setAutoLocate, viewState, setViewState } = useLocation();
+    const { location, setLocation, coordinates, setCoordinates, autoLocate, setAutoLocate, viewState, setViewState, currentLocation, setCurrentLocation } = useLocation();
     const { stations, setStations } = useStation();
     const [toggle, setToggle] = useState(false)
 
-
+    const currentPoint = () => {
+        return(
+            <Marker longitude={currentLocation.lon} latitude={currentLocation.lat} anchor="bottom" >
+                <TiLocationArrow color='blue' size={35}/>
+            </Marker>
+        )
+    }
 
     const stationsPrinter = () => {
         return (
@@ -49,6 +55,7 @@ function ScreenMap() {
                 mapStyle="mapbox://styles/mapbox/streets-v8"
             >
                 {stationsPrinter()}
+                {currentPoint()}
             </Map>
 
         </div>

@@ -42,4 +42,10 @@
     align-items: center;
     margin-left: 25px;
     height: 2.5rem;
+    cursor: pointer;
+}
+
+.menu:hover{
+    background-color: rgb(231, 231, 231);
+    cursor: pointer;
 }
