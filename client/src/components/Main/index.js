@@ -1,12 +1,17 @@
 import styles from './styles.module.css'
 import { BiSearchAlt2 } from "react-icons/bi";
+import { BiCurrentLocation } from "react-icons/bi";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useLocation } from '../../context/LocationContext'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 
 function Main() {
   const { location, setLocation, coordinates, setCoordinates, autoLocate, setAutoLocate, setViewState } = useLocation();
+
+  const [lat, setLat] = useState(null);
+  const [lng, setLng] = useState(null);
+  const [status, setStatus] = useState(null);
 
   useEffect(() => {
     findLocation()
@@ -36,6 +41,19 @@ function Main() {
       })
       .catch(e => console.log(e))
   }
+  const getLocation = () => {
+    if (!navigator.geolocation) {
+      setStatus('Geolocation is not supported by your browser');
+    } else {
+      setStatus('Locating...');
+      navigator.geolocation.getCurrentPosition((position) => {
+        setStatus(null);
+        setCoordinates({ lon: position.coords.longitude, lat: position.coords.latitude })
+      }, () => {
+        setStatus('Unable to retrieve your location');
+      });
+    }
+  }
 
   return (
     <div>
@@ -52,9 +70,11 @@ function Main() {
             />
           </form>
           <label htmlFor="search"><BiSearchAlt2 /></label>
+          <button onClick={getLocation} className={styles.locate} ><BiCurrentLocation size={25} /></button>
         </div>
       </div>
     </div>
+
   )
 }
 

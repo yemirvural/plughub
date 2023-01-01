@@ -5,19 +5,34 @@ import { useEffect, useState } from 'react';
 import { IoMdPin } from 'react-icons/io';
 import { useLocation } from '../../context/LocationContext';
 import { useStation } from '../../context/StationContext';
+import { tab } from '@testing-library/user-event/dist/tab';
 
 
 function ScreenMap() {
     const { location, setLocation, coordinates, setCoordinates, autoLocate, setAutoLocate, viewState, setViewState } = useLocation();
     const { stations, setStations } = useStation();
+    const [toggle, setToggle] = useState(false)
+
+
 
     const stationsPrinter = () => {
         return (
-            stations.map((el) =>
-            <Marker longitude={el.AddressInfo.Longitude} latitude={el.AddressInfo.Latitude} anchor="bottom" >
-                <IoMdPin size={35} />
-            </Marker>
-        )
+            stations.map((elma) =>
+                <Marker longitude={elma.AddressInfo.Longitude} latitude={elma.AddressInfo.Latitude} anchor="bottom" >
+                    {toggle && <div className={styles.card}>
+                        <ul>
+                            <li>{<b>{elma.AddressInfo.Title}</b>}</li>
+                            <li>Phone Number: {elma.AddressInfo.ContactTelephone1}</li>
+                            <li>Location: {elma.AddressInfo.Town}, {elma.AddressInfo.AddressLine1}, {elma.AddressInfo.StateOrProvince}, {elma.AddressInfo.Postcode} </li>
+                            <li>Payment: {elma.SubmissionStatus.Title}</li>
+                            <li>Description: <a href={elma.OperatorInfo.WebsiteURL}>{elma.UsageType.Title}</a> </li>
+                            <li>PlugType: {elma.Connections[0].ConnectionType.FormalName}</li>
+                        </ul>
+                    </div>}
+                    <IoMdPin onClick={() => setToggle(!toggle)} className={styles.marker} size={35} />
+                </Marker>
+
+            )
         )
 
 

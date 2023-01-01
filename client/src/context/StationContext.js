@@ -4,6 +4,12 @@ const StationContext = createContext();
 
 export const StationProvider = ({ children }) => {
     const [stations, setStations] = useState([]);
+    const { stationsInfo, setStationsInfo } = useState([
+        {
+            
+        }
+    ]);
+
 
     const values = {
         stations,
