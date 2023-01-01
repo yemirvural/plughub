@@ -57,7 +57,6 @@ function Main() {
       });
     }
   }
-  console.log(status)
 
   return (
     <div>

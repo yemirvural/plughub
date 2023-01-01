@@ -27,3 +27,20 @@
     cursor: pointer;
     color: rgb(66, 63, 80);
 }
+
+.sidebarStyle{
+    display: inline-block;
+    position: absolute;
+    font-size: 14px;
+    bottom: 0;
+    right: 0;
+    margin: 15px;
+    background-color: #404040;
+    color: #ffffff;
+    z-index: 1 !important;
+    padding: 8px;
+    font-weight: bold;
+    margin-top: 95vh;
+    border-radius: 20px;
+
+}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Map, { Marker } from 'react-map-gl';
+import Map, { Marker, ScaleControl } from 'react-map-gl';
 import styles from './styles.module.css'
 import { useEffect, useState } from 'react';
 import { IoMdPin } from 'react-icons/io';
@@ -14,9 +14,9 @@ function ScreenMap() {
     const [toggle, setToggle] = useState(false)
 
     const currentPoint = () => {
-        return(
+        return (
             <Marker longitude={currentLocation.lon} latitude={currentLocation.lat} anchor="bottom" >
-                <TiLocationArrow color='blue' size={35}/>
+                <TiLocationArrow color='blue' size={35} />
             </Marker>
         )
     }
@@ -57,7 +57,11 @@ function ScreenMap() {
                 {stationsPrinter()}
                 {currentPoint()}
             </Map>
-
+            <div className={styles.sidebarStyle}>
+                <div>
+                    Longitude: {viewState.longitude.toFixed(5)} | Latitude: {viewState.latitude.toFixed(5)} | Zoom: {viewState.zoom.toFixed(2)}
+                </div>
+            </div>
         </div>
     )
 }
